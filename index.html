@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHXWEB-3 | Marketing Agency for Web3 Projects</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(ellipse at center, #1a0a00 0%, #000000 70%);
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(45deg, #ff6b00, #ffaa00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #ff6b00;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(45deg, #ff6b00, #ffaa00);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            width: 100%;
+        }
+        
+        .hero-text h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #ffffff, #ff6b00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-text .subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            margin-bottom: 20px;
+            color: #cccccc;
+        }
+        
+        .hero-text .highlight {
+            color: #ff6b00;
+            font-weight: 600;
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            color: #aaaaaa;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact .cta-buttons { justify-content: center; }
+        
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(45deg, #ff6b00, #ffaa00);
+            color: white;
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 0, 0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid #ff6b00;
+        }
+        
+        .btn-secondary:hover {
+            background: rgba(255, 107, 0, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* 3D Visual Element */
+        .hero-visual {
+            position: relative;
+            height: 600px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .geometric-shape {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: rotate3d 20s linear infinite;
+        }
+        
+        @keyframes rotate3d {
+            0% { transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg); }
+            100% { transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg); }
+        }
+        
+        .face {
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border: 2px solid #ff6b00;
+            background: linear-gradient(45deg, rgba(255, 107, 0, 0.1), rgba(255, 170, 0, 0.1));
+            backdrop-filter: blur(5px);
+        }
+        
+        .face1 { transform: rotateY(0deg) translateZ(100px); }
+        .face2 { transform: rotateY(90deg) translateZ(100px); }
+        .face3 { transform: rotateY(180deg) translateZ(100px); }
+        .face4 { transform: rotateY(-90deg) translateZ(100px); }
+        .face5 { transform: rotateX(90deg) translateZ(100px); }
+        .face6 { transform: rotateX(-90deg) translateZ(100px); }
+        
+        /* Floating particles */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #ff6b00;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            box-shadow: 0 0 10px #ff6b00;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+            50% { transform: translateY(-100px) rotate(180deg); opacity: 0.5; }
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 120px 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(255, 107, 0, 0.05) 50%, transparent 100%);
+        }
+        
+        .services h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 60px;
+            background: linear-gradient(45deg, #ffffff, #ff6b00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 107, 0, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #ff6b00;
+            box-shadow: 0 20px 40px rgba(255, 107, 0, 0.2);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, #ff6b00, #ffaa00);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #ff6b00;
+        }
+        
+        .service-card p {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+        
+        .stat-item {
+            padding: 20px;
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #ff6b00;
+            display: block;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #aaaaaa;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 120px 0;
+            background: linear-gradient(135deg, rgba(255, 107, 0, 0.1) 0%, transparent 100%);
+            text-align: center;
+        }
+        
+        .contact h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffffff, #ff6b00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .contact p {
+            font-size: 1.3rem;
+            color: #cccccc;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                text-align: center;
+            }
+            
+            .hero-text h1 {
+                font-size: 3.5rem;
+            }
+            
+            .nav-content {
+                padding: 15px 20px;
+            }
+            
+            .nav-links {
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-text .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .services h2, .contact h2 {
+                font-size: 2.5rem;
+            }
+            
+            .geometric-shape {
+                width: 300px;
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">PHXWEB-3</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>PHXWEB-3</h1>
+                    <div class="subtitle">Marketing Agency Helping <span class="highlight">Web3</span></div>
+    
+                    <p>We specialize in elevating blockchain projects, NFT collections, and DeFi protocols through cutting-edge marketing strategies that drive engagement, build communities, and deliver measurable results in the Web3 ecosystem.</p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="btn btn-primary">Get Started</a>
+                        <a href="#services" class="btn btn-secondary">Our Services</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="geometric-shape">
+                        <div class="face face1"></div>
+                        <div class="face face2"></div>
+                        <div class="face face3"></div>
+                        <div class="face face4"></div>
+                        <div class="face face5"></div>
+                        <div class="face face6"></div>
+                    </div>
+                    <div class="particles" id="particles"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"></div>
+                    <h3>Token Launch Marketing</h3>
+                    <p>Comprehensive launch campaigns that build hype, attract investors, and create sustainable momentum for your token or cryptocurrency project.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"></div>
+                    <h3>NFT Collection Promotion</h3>
+                    <p>Strategic marketing for NFT drops, including community building, influencer partnerships, and marketplace optimization.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"></div>
+                    <h3>DeFi Protocol Growth</h3>
+                    <p>Specialized marketing for DeFi platforms focusing on TVL growth, user acquisition, and protocol adoption strategies.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">👥</div>
+                    <h3>Community Management</h3>
+                    <p>Build and nurture engaged communities across Discord, Telegram, Twitter, and other Web3-native platforms.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"></div>
+                    <h3>Viral Content Creation</h3>
+                    <p>Meme-driven content strategies, viral campaigns, and trend-jacking that resonates with crypto audiences.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"></div>
+                    <h3>Influencer Partnerships</h3>
+                    <p>Connections with top crypto influencers, KOLs, and thought leaders to amplify your project's reach.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <div class="stat-label">Projects Launched</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">$2B+</span>
+                    <div class="stat-label">Market Cap Generated</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">10M+</span>
+                    <div class="stat-label">Community Members</div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">95%</span>
+                    <div class="stat-label">Success Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Ready to Go Viral?</h2>
+            <p>Let's discuss how we can take your Web3 project to the next level with proven marketing strategies that deliver results.</p>
+            <div class="cta-buttons">
+                <a href="mailto:hello@phxweb3.com" class="btn btn-primary">Start Your Campaign</a>
+                <a href="#" class="btn btn-secondary">Schedule a Call</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Generate floating particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.top = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 6 + 's';
+                particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate stats on scroll
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = entry.target;
+                        const finalValue = target.textContent;
+                        const numericValue = parseInt(finalValue.replace(/[^\d]/g, ''));
+                        let currentValue = 0;
+                        const increment = numericValue / 50;
+                        
+                        const timer = setInterval(() => {
+                            currentValue += increment;
+                            if (currentValue >= numericValue) {
+                                currentValue = numericValue;
+                                clearInterval(timer);
+                            }
+                            
+                            if (finalValue.includes('$')) {
+                                target.textContent = '$' + Math.floor(currentValue).toLocaleString() + (finalValue.includes('B') ? 'B+' : '+');
+                            } else if (finalValue.includes('M')) {
+                                target.textContent = Math.floor(currentValue).toLocaleString() + 'M+';
+                            } else if (finalValue.includes('%')) {
+                                target.textContent = Math.floor(currentValue) + '%';
+                            } else {
+                                target.textContent = Math.floor(currentValue).toLocaleString() + '+';
+                            }
+                        }, 50);
+                        
+                        observer.unobserve(target);
+                    }
+                });
+            });
+
+            statNumbers.forEach(stat => {
+                observer.observe(stat);
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            animateStats();
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(0, 0, 0, 0.95)';
+            } else {
+                nav.style.background = 'rgba(0, 0, 0, 0.8)';
+            }
+        });
+    </script>
+</body>
+</html>
